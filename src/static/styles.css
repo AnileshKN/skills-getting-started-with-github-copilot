@@ -158,8 +158,9 @@ footer {
 }
 
 .participants-list ul {
-  list-style: disc;
-  margin-left: 18px;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
   color: #333;
 }
 
@@ -168,5 +169,21 @@ footer {
   background: rgba(26, 35, 126, 0.03);
   padding: 6px 8px;
   border-radius: 4px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remove-participant-btn {
+  background: transparent;
+  border: none;
+  color: #c62828;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.remove-participant-btn:hover {
+  background: rgba(198, 40, 40, 0.08);
 }
