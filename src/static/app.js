@@ -20,12 +20,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        // create card content including a participants container
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants">
+            <strong>Participants:</strong>
+            <div class="participants-list"></div>
+          </div>
         `;
+
+        // populate participants-list as a bulleted list (or show placeholder)
+        const participantsContainer = activityCard.querySelector(".participants-list");
+        if (details.participants && details.participants.length > 0) {
+          const ul = document.createElement("ul");
+          details.participants.forEach((p) => {
+            const li = document.createElement("li");
+            li.textContent = p;
+            ul.appendChild(li);
+          });
+          participantsContainer.appendChild(ul);
+        } else {
+          const placeholder = document.createElement("p");
+          placeholder.className = "info";
+          placeholder.textContent = "No participants yet";
+          participantsContainer.appendChild(placeholder);
+        }
 
         activitiesList.appendChild(activityCard);
 
